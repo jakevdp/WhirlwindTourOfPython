@@ -41,13 +41,15 @@ workshops around the world.
 18. [Appendix: Code To Reproduce Figures](17-Figures.ipynb)
 
 
-## License
+## License and Citation
 
 This material is released under the "No Rights Reserved" [CC0](LICENSE)
 license, and thus you are free to re-use, modify, build-on, and enhance
 this material for any purpose.
-
-That said, I request that if you use or adapt this material, that you include
-a proper attribution and/or citation (citation information coming soon).
-
 Read more about CC0 [here](https://creativecommons.org/share-your-work/public-domain/cc0/).
+
+If you do use this material, I would appreciate attribution.
+An attribution usually includes the title, author, publisher, and ISBN.
+For example:
+
+> A Whirlwind Tour of Python by Jake VanderPlas (O’Reilly). Copyright 2016 O’Reilly Media, Inc., 978-1-491-96465-1.
