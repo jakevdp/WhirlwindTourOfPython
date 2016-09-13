@@ -17,6 +17,9 @@ These notebooks are adapted from lectures and workshops I've given on these
 topics at University of Washington and at various conferences, meetings, and
 workshops around the world.
 
+This material was written and tested using **Python 3.5**, and should work for any Python 3.X
+version. I have done my best to note places where the syntax of Python 2.X will differ.
+
 ## Index
 
 [Notebook Index](Index.ipynb)
