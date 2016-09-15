@@ -22,6 +22,10 @@ version. I have done my best to note places where the syntax of Python 2.X will 
 
 ## Index
 
+*(Note: sometimes GitHub's notebook rendering can be slow or finicky.
+If you're having trouble with the following links, try viewing the material
+[on nbviewer](http://nbviewer.jupyter.org/github/jakevdp/WhirlwindTourOfPython/blob/master/Index.ipynb))*
+
 [Notebook Index](Index.ipynb)
 
 1. [Introduction](00-Introduction.ipynb)
