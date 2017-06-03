@@ -11,9 +11,10 @@ already familiar with programming in another language.
 
 The material is particularly aimed at those who wish to use Python for data 
 science and/or scientific programming, and in this capacity serves as an
-introduction to my upcoming book,
-[*The Python Data Science Handbook*](http://shop.oreilly.com/product/0636920034919.do) (also [on github](https://github.com/jakevdp/PythonDataScienceHandbook)).
-These notebooks are adapted from lectures and workshops I've given on these
+introduction to
+[*The Python Data Science Handbook*](http://shop.oreilly.com/product/0636920034919.do) (also
+with notebooks [on github](https://github.com/jakevdp/PythonDataScienceHandbook)).
+These materials are adapted from courses and workshops I've given on these
 topics at University of Washington and at various conferences, meetings, and
 workshops around the world.
 
