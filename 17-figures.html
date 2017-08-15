@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="author" content="Jake VanderPlas">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <title>Appendix: Figure Code | A Whirlwind Tour of Python</title>
+
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" title="A Whirlwind Tour of Python blog atom feed" href="/feeds/all.atom.xml" />
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/theme/css/icons.css"/>
+        <style>.highlight .hll { background-color: #ffffcc }
+.highlight .c { color: #60a0b0; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #007020; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #007020 } /* Comment.Preproc */
+.highlight .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #808080 } /* Generic.Output */
+.highlight .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0040D0 } /* Generic.Traceback */
+.highlight .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #007020 } /* Keyword.Pseudo */
+.highlight .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #902000 } /* Keyword.Type */
+.highlight .m { color: #40a070 } /* Literal.Number */
+.highlight .s { color: #4070a0 } /* Literal.String */
+.highlight .na { color: #4070a0 } /* Name.Attribute */
+.highlight .nb { color: #007020 } /* Name.Builtin */
+.highlight .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+.highlight .no { color: #60add5 } /* Name.Constant */
+.highlight .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #007020 } /* Name.Exception */
+.highlight .nf { color: #06287e } /* Name.Function */
+.highlight .nl { color: #002070; font-weight: bold } /* Name.Label */
+.highlight .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #bb60d5 } /* Name.Variable */
+.highlight .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #40a070 } /* Literal.Number.Float */
+.highlight .mh { color: #40a070 } /* Literal.Number.Hex */
+.highlight .mi { color: #40a070 } /* Literal.Number.Integer */
+.highlight .mo { color: #40a070 } /* Literal.Number.Oct */
+.highlight .sb { color: #4070a0 } /* Literal.String.Backtick */
+.highlight .sc { color: #4070a0 } /* Literal.String.Char */
+.highlight .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #4070a0 } /* Literal.String.Double */
+.highlight .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #4070a0 } /* Literal.String.Heredoc */
+.highlight .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+.highlight .sx { color: #c65d09 } /* Literal.String.Other */
+.highlight .sr { color: #235388 } /* Literal.String.Regex */
+.highlight .s1 { color: #4070a0 } /* Literal.String.Single */
+.highlight .ss { color: #517918 } /* Literal.String.Symbol */
+.highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #bb60d5 } /* Name.Variable.Class */
+.highlight .vg { color: #bb60d5 } /* Name.Variable.Global */
+.highlight .vi { color: #bb60d5 } /* Name.Variable.Instance */
+.highlight .il { color: #40a070 } /* Literal.Number.Integer.Long */</style>
+        <style>body {
+  margin: 0;
+  padding: 0;
+  font: 15px 'Source Sans Pro', sans-serif;
+  line-height: 1.6em;
+  color: #222;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: #007EE5;
+  text-decoration: none;
+}
+a:hover {
+  color: #007EE5;
+  text-decoration: none;
+}
+header.main-header {
+  background: none repeat scroll 0% 0% #205F29;
+  margin-bottom: 0px;
+}
+header.main-header a {
+  color: #fff;
+}
+header.main-header .container {
+  max-width: 1000px;
+}
+header.main-header .container nav a:hover {
+  background-color: #5C881C;
+}
+article {
+  margin: 0;
+}
+article header.about {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+article header {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+article header h1 {
+  margin-bottom: 2px;
+  font-weight: 700;
+  color: #000;
+}
+article header time {
+  color: #9E9E9E;
+  font-size: 0.85em;
+  float: right;
+}
+article header time.left {
+  color: #9E9E9E;
+  font-size: 0.85em;
+  float: left;
+}
+article div.social-links ul {
+  padding: 0px;
+}
+article div.social-links li {
+  display: inline;
+  font-size: 20px;
+}
+article div.social-links li a {
+  color: #000;
+  padding: 10px;
+}
+article div.social-links li a:hover {
+  color: #666;
+  text-decoration: none;
+}
+article p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.6em;
+}
+article p.note {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 0.533em 0.733em;
+}
+article p.update {
+  background-color: #FEEFB3;
+  border: 1px solid #e6e68a;
+  padding: 0.533em 0.733em;
+}
+article p.alert {
+  background-color: #ffe2e2;
+  border: 1px solid #ffb2b2;
+  padding: 0.533em 0.733em;
+}
+article ul,
+article ol {
+  margin-top: 0px;
+  margin-bottom: 25px;
+}
+article li {
+  font-size: 16px;
+  line-height: 1.6em;
+}
+article a:hover {
+  text-decoration: underline;
+}
+article blockquote {
+  border-left: 2px solid #c7c7cc;
+  color: #666;
+  margin: 30px 0;
+  padding: 0 0 0 25px;
+}
+article img {
+  max-width: 100%;
+}
+article code {
+  color: #333;
+  background-color: #EEE;
+  border-radius: 0;
+  font-size: 13px;
+}
+article .meta {
+  font-size: 11px;
+}
+article .meta a:hover {
+  text-decoration: none;
+}
+article .meta div {
+  margin-bottom: 20px;
+  display: block;
+}
+article .meta a.tag {
+  margin: 0 10px 10px 0;
+  padding: 1px 12px;
+  display: inline-block;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.05);
+}
+article .meta a.tag:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+article .meta a.read_more,
+article .meta a.comments_btn {
+  font-size: 14px;
+  font-weight: 800;
+  padding: 10px 20px;
+  color: #205F29;
+  background: #FFF;
+  border: 1px solid #205F29;
+}
+article .meta a.read_more:hover,
+article .meta a.comments_btn:hover {
+  color: #FFF;
+  background: #5C881C;
+}
+.index {
+  max-width: 700px;
+}
+.index article header h2 {
+  font-size: 36px;
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+.index article header h2 a {
+  color: #000;
+}
+.index article header h2 a:hover {
+  color: #007EE5;
+  text-decoration: none;
+}
+.index .separator {
+  padding: 40px 0 0 0;
+  margin: 0 0 40px 0;
+  height: 10px;
+  border-bottom: solid 1px #CCC;
+}
+.index .pagination {
+  display: block;
+  margin-bottom: 100px;
+}
+.index .pagination .left {
+  text-align: right;
+}
+.index .pagination .right {
+  text-align: left;
+}
+.index .pagination a {
+  display: inline-block;
+  border: 2px solid #5C881C;
+  margin: 0 5px;
+  padding: 8px 20px;
+  font-weight: bold;
+  color: #5C881C;
+}
+.index .pagination a:hover {
+  color: #FFF;
+  background: #5C881C;
+}
+.post {
+  max-width: 700px;
+}
+.post h2:before {
+  content: "# ";
+  font-weight: bold;
+  color: #DDD;
+}
+.post h3:before {
+  content: "## ";
+  font-weight: bold;
+  color: #DDD;
+}
+.post h4:before {
+  content: "### ";
+  font-weight: bold;
+  color: #DDD;
+}
+.post article .meta {
+  margin: 50px 0 100px;
+}
+.list {
+  max-width: 700px;
+}
+.list ul.double-list {
+  margin: 0 auto 60px;
+  padding: 0;
+  list-style-type: none;
+}
+.list ul.double-list li {
+  padding: 5px 0;
+}
+.list ul.double-list li h2 {
+  font-size: 1em;
+  display: inline;
+  font-weight: normal;
+}
+.list ul.double-list li span {
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: right;
+  float: right;
+  padding-top: 3px;
+  font-size: 12px;
+  color: #999;
+}
+.full-width-content {
+  padding-top: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+.col-xs-1,
+.col-sm-1,
+.col-md-1,
+.col-lg-1,
+.col-xs-2,
+.col-sm-2,
+.col-md-2,
+.col-lg-2,
+.col-xs-3,
+.col-sm-3,
+.col-md-3,
+.col-lg-3,
+.col-xs-4,
+.col-sm-4,
+.col-md-4,
+.col-lg-4,
+.col-xs-5,
+.col-sm-5,
+.col-md-5,
+.col-lg-5,
+.col-xs-6,
+.col-sm-6,
+.col-md-6,
+.col-lg-6,
+.col-xs-7,
+.col-sm-7,
+.col-md-7,
+.col-lg-7,
+.col-xs-8,
+.col-sm-8,
+.col-md-8,
+.col-lg-8,
+.col-xs-9,
+.col-sm-9,
+.col-md-9,
+.col-lg-9,
+.col-xs-10,
+.col-sm-10,
+.col-md-10,
+.col-lg-10,
+.col-xs-11,
+.col-sm-11,
+.col-md-11,
+.col-lg-11,
+.col-xs-12,
+.col-sm-12,
+.col-md-12,
+.col-lg-12 {
+  padding-right: 0px;
+  padding-left: 0px;
+}</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+        <script type="text/javascript">
+        init_mathjax = function() {
+            if (window.MathJax) {
+                // MathJax loaded
+                MathJax.Hub.Config({
+                    tex2jax: {
+                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+                    },
+                    displayAlign: 'left', // Change this to 'center' to center equations.
+                    "HTML-CSS": {
+                        styles: {'.MathJax_Display': {"margin": 0}}
+                    }
+                });
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            }
+        }
+        init_mathjax();
+        </script>
+
+    </head>
+
+    <body>
+        <header class="navbar navbar-inverse bs-docs-nav">
+            <div class="container-fluid">
+                <div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#theNavbar">
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span> 
+		  </button>
+                  <a class="navbar-brand" href="/WhirlwindTourOfPython/" title="Home" class="title">A Whirlwind Tour of Python</a>
+                </div>
+                <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="theNavbar">
+		    <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/pages/about.html" title="About">About</a></li>
+                            <li><a href="/archives.html" title="Archive">Archive</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div id="wrap">
+
+<div class="container bookinfo">
+<p>
+<img align="left" style="padding-right:10px;" src="/WhirlwindTourOfPython/figures/cover-small.jpg">
+<em>This notebook contains an excerpt from the <a href="http://www.oreilly.com/programming/free/a-whirlwind-tour-of-python.csp">Whirlwind Tour of Python</a> by Jake VanderPlas; the content is available <a href="https://github.com/jakevdp/WhirlwindTourOfPython">on GitHub</a>.</em></p>
+<p><em>The text and code are released under the <a href="https://github.com/jakevdp/WhirlwindTourOfPython/blob/master/LICENSE">CC0</a> license; see also the companion project, the <a href="https://github.com/jakevdp/PythonDataScienceHandbook">Python Data Science Handbook</a>.</em></p>
+</div>
+
+
+<div class="container post">
+
+    <article>
+        <header>
+            <h1>Appendix: Figure Code</h1>
+        </header>
+
+        <div class="article_content">
+            <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected {
+  border-color: #ababab;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  padding: 0.4em;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+.rendered_html pre,
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+.rendered_html td,
+
+
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><!--NAVIGATION-->
+&lt; <a href="16-further-resources.html">Resources for Further Learning</a> | <a href="index.html">Contents</a> |</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This section contains code used to generate figures that appear in this report.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;fig&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;fig&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Section-6:-List-Indexing">Section 6: List Indexing<a class="anchor-link" href="#Section-6:-List-Indexing">&#182;</a></h2><p>This figure helps visualize how Python's indexing works.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                  <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">([</span><span class="n">i</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;monospace&#39;</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;monospace&#39;</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.58</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span> <span class="o">+</span> <span class="n">i</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;monospace&#39;</span><span class="p">)</span>
+    
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">4.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]);</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fig/list-indexing.png&#39;</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><!--NAVIGATION-->
+&lt; <a href="16-further-resources.html">Resources for Further Learning</a> | <a href="index.html">Contents</a> |</p>
+
+</div>
+</div>
+</div>
+ 
+
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+        </div>
+
+    </article>
+</div>
+        </div>
+<!--
+    <footer>
+      <p>
+        © 2012-2017 Jake VanderPlas, license <a href="https://github.com/jakevdp/jakevdp.github.io-source/blob/master/LICENSE"> </a>
+        unless otherwise noted.
+        Generated by <a href= "http://docs.getpelican.com/">Pelican</a>.
+      </p>
+    </footer>
+-->
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34061646-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-34061646-1');
+    ga('send', 'pageview');
+</script>
+    </body>
+</html>
