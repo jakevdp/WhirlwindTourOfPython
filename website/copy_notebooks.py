@@ -16,10 +16,13 @@ Template: {template}
 
 INTRO_TEXT = """
 This website contains the full text of my free O'Reilly report, [*A Whirlwind Tour of Python*](http://www.oreilly.com/programming/free/a-whirlwind-tour-of-python.csp).
-The content is also available [on Github](https://github.com/jakevdp/WhirlwindTourOfPython) in the form of Jupyter Notebooks.
 
 *A Whirlwind Tour of Python* is a fast-paced introduction to essential features of the Python language, aimed at researchers and developers who are already familiar with programming in another language.
 The material is particularly designed for those who wish to use Python for data science and/or scientific programming, and in this capacity serves as an introduction to my longer book, [*The Python Data Science Handbook*](http://jakevdp.github.io/PythonDataScienceHandbook).
+
+The content is also available [on Github](https://github.com/jakevdp/WhirlwindTourOfPython) in the form of Jupyter Notebooks, or from O'Reilly site as a [free e-book](http://www.oreilly.com/programming/free/a-whirlwind-tour-of-python.csp) or [free pdf](http://www.oreilly.com/programming/free/files/a-whirlwind-tour-of-python.pdf).
+
+The text is released under the This material is released under the "No Rights Reserved" [CC0 license](https://creativecommons.org/share-your-work/public-domain/cc0/), and thus you are free to re-use, modify, build-on, and enhance this material for any purpose.
 """
 
 
