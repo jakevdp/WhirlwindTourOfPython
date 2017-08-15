@@ -15,7 +15,7 @@ Template: {template}
 """
 
 INTRO_TEXT = """
-These are the Jupyter Notebooks behind my free O'Reilly report, [*A Whirlwind Tour of Python*](http://www.oreilly.com/programming/free/a-whirlwind-tour-of-python.csp).
+This website contains the full text of my free O'Reilly report, [*A Whirlwind Tour of Python*](http://www.oreilly.com/programming/free/a-whirlwind-tour-of-python.csp).
 The content is also available [on Github](https://github.com/jakevdp/WhirlwindTourOfPython) in the form of Jupyter Notebooks.
 
 *A Whirlwind Tour of Python* is a fast-paced introduction to essential features of the Python language, aimed at researchers and developers who are already familiar with programming in another language.
