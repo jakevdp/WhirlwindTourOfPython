@@ -22,7 +22,7 @@ The material is particularly designed for those who wish to use Python for data 
 
 The content is also available [on Github](https://github.com/jakevdp/WhirlwindTourOfPython) in the form of Jupyter Notebooks, or from O'Reilly site as a [free e-book](http://www.oreilly.com/programming/free/a-whirlwind-tour-of-python.csp) or [free pdf](http://www.oreilly.com/programming/free/files/a-whirlwind-tour-of-python.pdf).
 
-The text is released under the This material is released under the "No Rights Reserved" [CC0 license](https://creativecommons.org/share-your-work/public-domain/cc0/), and thus you are free to re-use, modify, build-on, and enhance this material for any purpose.
+This material is released under the "No Rights Reserved" [CC0 license](https://creativecommons.org/share-your-work/public-domain/cc0/), and thus you are free to re-use, modify, build-on, and enhance this material for any purpose.
 """
 
 
