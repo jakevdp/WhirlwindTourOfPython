@@ -14,6 +14,14 @@ Template: {template}
 {{% notebook notebooks/{notebook_file} cells[{cells}] %}}
 """
 
+INTRO_TEXT = """
+These are the Jupyter Notebooks behind my free O'Reilly report, [*A Whirlwind Tour of Python*](http://www.oreilly.com/programming/free/a-whirlwind-tour-of-python.csp).
+The content is also available [on Github](https://github.com/jakevdp/WhirlwindTourOfPython) in the form of Jupyter Notebooks.
+
+*A Whirlwind Tour of Python* is a fast-paced introduction to essential features of the Python language, aimed at researchers and developers who are already familiar with programming in another language.
+The material is particularly designed for those who wish to use Python for data science and/or scientific programming, and in this capacity serves as an introduction to my longer book, [*The Python Data Science Handbook*](http://jakevdp.github.io/PythonDataScienceHandbook).
+"""
+
 
 def abspath_from_here(*args):
     here = os.path.dirname(__file__)
@@ -54,6 +62,7 @@ def copy_notebooks():
             cells = '1:'
             template = 'page'
             title = 'A Whirlwind Tour of Python'
+            content.cells[3].source = INTRO_TEXT
         else:
             cells = '2:'
             template = 'booksection'
