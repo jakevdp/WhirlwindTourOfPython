@@ -1,5 +1,7 @@
 # A Whirlwind Tour of Python
 
+[![Binder](http://mybinder.org/badge.svg)](http://mybinder.org:/repo/jakevdp/whirlwindtourofpython)
+
 *Jake VanderPlas, Summer 2016*
 
 This repository contains the Jupyter Notebooks behind my O'Reilly report,
